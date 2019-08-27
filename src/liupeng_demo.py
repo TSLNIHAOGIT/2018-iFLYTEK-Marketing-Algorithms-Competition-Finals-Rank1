@@ -211,6 +211,8 @@ num = 1
 train_user = pd.Series()
 test_user = pd.Series(0,index=list(range(test_x.shape[0])))
 fscore_se = pd.Series(0,index=list(range(arr.shape[1])))
+##############
+#大概思路特征重要性取前100特征，这些特征组成一个stacking特征和原来的特征进行合并
 for train_part_index,evals_index in skf.split(train_x,train_y):
     EVAL_RESULT = {}
     train_part = lgb.Dataset(train_x[train_part_index,:],label=train_y.loc[train_part_index])
